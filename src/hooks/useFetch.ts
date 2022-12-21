@@ -7,7 +7,7 @@ export const useFetch = () => {
     loading: true,
     error: null,
   });
-  const URL = "http://www.mocky.io/v2/59f08692310000b4130e9f71";
+  const URL = "https://www.mocky.io/v2/59f08692310000b4130e9f71";
 
   const handleFetch = useCallback(async () => {
     try {
