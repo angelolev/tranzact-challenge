@@ -1,0 +1,22 @@
+.bet{
+    border-bottom: .1rem solid #ccc;
+    margin-bottom: 2rem;
+    padding-bottom: 1.6rem;
+    text-align: center;
+
+    &__name {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    &__price {
+        font-weight: bold;
+        margin-bottom: 1rem;
+    }
+
+    &__button {
+        background-color: #f1f2f6;
+        border: none;
+        padding: 1rem;
+    }
+}
