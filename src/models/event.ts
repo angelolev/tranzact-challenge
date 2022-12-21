@@ -5,5 +5,4 @@ export interface IEvent {
     name: string;
     markets: IMarket[];
     isVisible: boolean;
-    hasSelectedBets?: boolean;
   }

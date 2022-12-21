@@ -14,9 +14,6 @@ const EventsList : React.FC<EventsListInterface> = () => {
 	const { data, loading, error } = useFetch();
 
 	const dispatch = useDispatch();
-
-  	const stateBets = useSelector((store: AppStore) => store.bets);
-	const findBet = (eventId: string) => !!stateBets.find(b => b.eventId === eventId);
 	
 	if (loading) return <Loading/>
     if (error) return <Error message={error}/>
@@ -30,7 +27,6 @@ const EventsList : React.FC<EventsListInterface> = () => {
 					markets={event.markets}
 					name={event.name}
 					isVisible={event.markets.length > 0}
-					hasSelectedBets={findBet(event.id)}
 				/>
 			))}
 			

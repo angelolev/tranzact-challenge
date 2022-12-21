@@ -1,4 +1,11 @@
 .market{
+    padding: 1.2rem;
+
+    &.is--selected {
+        background-color: #27ae60;
+        color: #fff;
+    }
+
     &__name {
         font-weight: bold;
     }

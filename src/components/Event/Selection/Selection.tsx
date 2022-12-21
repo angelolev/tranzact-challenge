@@ -6,7 +6,7 @@ import { addBet } from '@/redux/states/bets';
 import { AppStore } from '@/redux/store';
 
 
-const Selection : React.FC<ISelection> = ({name, price, eventId}) => {
+const Selection : React.FC<ISelection> = ({name, price, marketId}) => {
 	const [selectedBets, setSelectedBets] = useState<IBet[]>([]);
 
 	const dispatch = useDispatch();
@@ -21,7 +21,7 @@ const Selection : React.FC<ISelection> = ({name, price, eventId}) => {
 
 	return (
 		<div className="selection">
-			<button className='selection__button' onClick={()=>handleChange({id: `bet-${name}`, name, price, eventId})}>{name} <br /> {price}</button>
+			<button className='selection__button' onClick={()=>handleChange({id: `bet-${name}`, name, price, marketId})}>{name} <br /> {price}</button>
 		</div>
 	);
 };
