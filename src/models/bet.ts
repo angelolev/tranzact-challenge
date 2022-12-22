@@ -1,5 +1,5 @@
 export interface IBet {
     id: string;
     name: string;
-    price: string;
+    price: number;
 }

@@ -1,9 +1,7 @@
 import { IEvent } from '@/models';
 import React from 'react';
 import { Market } from './Market';
-import { useDispatch, useSelector } from 'react-redux';
 import './styles/Event.scss';
-import { AppStore } from '@/redux/store';
 
 const Event : React.FC<IEvent> = ({id, name, markets, isVisible}) => {
 	if (!isVisible) return <></>

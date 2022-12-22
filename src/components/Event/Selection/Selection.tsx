@@ -1,14 +1,13 @@
 import { IBet, ISelection } from '@/models';
-import React, { useState } from 'react';
+import React from 'react';
 import './styles/Selection.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { addBet } from '@/redux/states/bets';
+import { addBet, removeBet } from '@/redux/states/bets';
 import { AppStore } from '@/redux/store';
 import { isOpen } from '@/redux/states/slidebets';
 
 
 const Selection : React.FC<ISelection> = ({id, name, price, isSelected}) => {
-	const [selectedBets, setSelectedBets] = useState<IBet[]>([]);
 
 	const dispatch = useDispatch();
 	const stateBets = useSelector((store: AppStore) => store.bets);
@@ -16,9 +15,12 @@ const Selection : React.FC<ISelection> = ({id, name, price, isSelected}) => {
 	const filterBet = (bet: IBet) => stateBets.filter(b => b.id !== bet.id);
 
 	const handleChange = (bet: IBet) => {
-		const currentBet = findBet(bet) ? filterBet(bet) : [...stateBets, bet]
-		dispatch(addBet(currentBet))
-		dispatch(isOpen({'isOpen': true}))
+		if(findBet(bet)) {
+			dispatch(removeBet(bet))
+		} else {
+			dispatch(addBet(bet))
+			dispatch(isOpen({'isOpen': true}))
+		}
 	};
 
 	return (

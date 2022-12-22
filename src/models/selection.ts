@@ -1,6 +1,6 @@
 export interface ISelection {
     id: string;
     name: string;
-    price: string;
+    price: number;
     isSelected?: boolean;
   }
