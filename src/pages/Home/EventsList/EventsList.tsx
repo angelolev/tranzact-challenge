@@ -1,37 +1,28 @@
-import React from 'react';
-import './styles/EventsList.scss';
-import { useDispatch, useSelector } from 'react-redux';
-import { AppStore } from '@/redux/store';
-import { addBet } from '@/redux/states/bets';
-import { IBet, IEvent } from '@/models';
-import { useFetch } from '@/hooks';
-import { Loading, Error, Event } from '@/components';
-
+import React from "react";
+import "./styles/EventsList.scss";
+import { useSelector } from "react-redux";
+import { AppStore } from "@/redux/store";
+import { IEvent } from "@/models";
+import { Event } from "@/components";
 
 export interface EventsListInterface {}
 
-const EventsList : React.FC<EventsListInterface> = () => {
-	const { data, loading, error } = useFetch();
+const EventsList: React.FC<EventsListInterface> = () => {
+  const storeEvents = useSelector((store: AppStore) => store.events);
 
-	const dispatch = useDispatch();
-	
-	if (loading) return <Loading/>
-    if (error) return <Error message={error}/>
-
-	return (
-		<div className='events-list'>
-			{data.map((event: IEvent) => (
-				<Event
-					id={event.id}
-					key={event.id}
-					markets={event.markets}
-					name={event.name}
-					isVisible={event.markets.length > 0}
-				/>
-			))}
-			
-		</div>
-	)
+  return (
+    <div className="events-list">
+      {storeEvents.map((event: IEvent) => (
+        <Event
+          id={event.id}
+          key={event.id}
+          markets={event.markets}
+          name={event.name}
+          isVisible={event.markets.length > 0}
+        />
+      ))}
+    </div>
+  );
 };
 
 export default EventsList;

@@ -1,34 +1,35 @@
-import React, { useState } from "react";
+import React from "react";
 import SlidingPane from "react-sliding-pane";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import "./styles/SlideBet.scss";
 import { AppStore } from "@/redux/store";
 import { Bet } from "./Bet";
+import { isOpen } from "@/redux/states/slidebets";
 export interface SlideBetInterface {}
 
 const SlideBet: React.FC<SlideBetInterface> = () => {
-  const [isPaneOpen, setIsPaneOpen] = useState<boolean>(false);
+  const dispatch = useDispatch();
   const stateBets = useSelector((store: AppStore) => store.bets);
+  const isSlideOpen = useSelector((store: AppStore) => store.slideBets);
 
   return (
     <div className="slidebet">
       <SlidingPane
         className="some-custom-class"
         overlayClassName="some-custom-overlay-class"
-        isOpen={isPaneOpen}
+        isOpen={isSlideOpen.isOpen}
         title="🎲 My bets"
         subtitle="Your selected bets"
         onRequestClose={() => {
-          // triggered on "<" on left top click or on outside click
-          setIsPaneOpen(false);
+          dispatch(isOpen({'isOpen': false}))
         }}
       >
         {stateBets.map((bet) => (
           <Bet key={bet.id} id={bet.id} name={bet.name} price={bet.price} />
         ))}
       </SlidingPane>
-      <button className="slidebet__button" onClick={() => setIsPaneOpen(true)}>
+      <button className="slidebet__button" onClick={() => dispatch(isOpen({'isOpen': true}))}>
 	  💰 My Bets
       </button>
     </div>

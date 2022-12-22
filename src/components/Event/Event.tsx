@@ -8,9 +8,6 @@ import { AppStore } from '@/redux/store';
 const Event : React.FC<IEvent> = ({id, name, markets, isVisible}) => {
 	if (!isVisible) return <></>
 
-	const stateBets = useSelector((store: AppStore) => store.bets);
-	const findBet = (marketId: string) => !!stateBets.find(b => b.marketId === marketId);
-
 	return (
 		<div className='event'>
 			<div className="event__title">⚽ {name}</div>
@@ -21,8 +18,7 @@ const Event : React.FC<IEvent> = ({id, name, markets, isVisible}) => {
 						id={market.id}
 						key={market.id}
 						name={market.name}
-						selections={market.selections}
-						hasSelectedBets={findBet(market.id)} />
+						selections={market.selections} />
 				))}
 			</div>
 		</div >

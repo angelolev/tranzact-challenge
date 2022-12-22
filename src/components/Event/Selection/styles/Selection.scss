@@ -6,5 +6,10 @@
         font-size: 1.4rem;
         line-height: 1.6rem;
         min-width: 10rem;
+
+        &.is--selected {
+            background-color: #27ae60;
+            color: #fff;
+        }
     }
 }

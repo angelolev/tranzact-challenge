@@ -1,4 +1,5 @@
 export enum LocalStorageTypes {
-    BETS = 'bets'
+    BETS = 'bets',
+    EVENTS = 'events'
   }
   
