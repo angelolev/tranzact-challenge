@@ -8,7 +8,7 @@ const Event : React.FC<IEvent> = ({id, name, markets, isVisible}) => {
 
 	return (
 		<div className='event'>
-			<div className="event__title">⚽ {name}</div>
+			<div className="event__title">{`⚽ ${name}`}</div>
 			<div className="event__markets">
 				{markets.map((market) => (
 					<Market 

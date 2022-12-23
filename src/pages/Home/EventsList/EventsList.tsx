@@ -1,18 +1,17 @@
 import React from "react";
 import "./styles/EventsList.scss";
-import { useSelector } from "react-redux";
-import { AppStore } from "@/redux/store";
 import { IEvent } from "@/models";
 import { Event } from "@/components";
 
-export interface EventsListInterface {}
+export interface EventsListInterface {
+  events: IEvent[]
+}
 
-const EventsList: React.FC<EventsListInterface> = () => {
-  const storeEvents = useSelector((store: AppStore) => store.events);
+const EventsList: React.FC<EventsListInterface> = ({events}) => {
 
   return (
     <div className="events-list">
-      {storeEvents.map((event: IEvent) => (
+      {events.map((event: IEvent) => (
         <Event
           id={event.id}
           key={event.id}

@@ -11,26 +11,27 @@ export interface SlideBetInterface {}
 const SlideBet: React.FC<SlideBetInterface> = () => {
   const dispatch = useDispatch();
   const stateBets = useSelector((store: AppStore) => store.bets);
-  const isSlideOpen = useSelector((store: AppStore) => store.slideBets);
+  const slidingState = useSelector((store: AppStore) => store.slideBets);
 
   return (
     <div className="slidebet">
       <SlidingPane
-        className="some-custom-class"
-        overlayClassName="some-custom-overlay-class"
-        isOpen={isSlideOpen.isOpen}
+        isOpen={slidingState.isOpen}
         title="🎲 My bets"
         subtitle="Your selected bets"
         onRequestClose={() => {
-          dispatch(isOpen({'isOpen': false}))
+          dispatch(isOpen({ isOpen: false }));
         }}
       >
         {stateBets.map((bet) => (
           <Bet key={bet.id} id={bet.id} name={bet.name} price={bet.price} />
         ))}
       </SlidingPane>
-      <button className="slidebet__button" onClick={() => dispatch(isOpen({'isOpen': true}))}>
-	  💰 My Bets
+      <button
+        className="slidebet__button"
+        onClick={() => dispatch(isOpen({ isOpen: true }))}
+      >
+        💰 My Bets
       </button>
     </div>
   );
