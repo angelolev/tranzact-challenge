@@ -11,7 +11,7 @@ export const betsSlice = createSlice({
     : initialState,
   reducers: {
     addBet: (state, action) => {
-      setLocalStorage(LocalStorageTypes.BETS, action.payload);
+      setLocalStorage(LocalStorageTypes.BETS, [...state, action.payload]);
       return [...state, action.payload];
     },
     removeBet: (state, action) => {

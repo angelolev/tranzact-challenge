@@ -7,7 +7,6 @@ export const slideBetsSlice = createSlice({
     isOpen: (state, action) => {
         return action.payload
     },
-   
   }
 });
 
