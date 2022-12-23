@@ -8,8 +8,8 @@ import './styles/Bet.scss';
 const Bet : React.FC<IBet> = ({id, name, price}) => {
 	const dispatch = useDispatch();
 	
-	const handleDelete = (bet: IBet) => {
-		dispatch(removeBet(bet));
+	const handleDelete = (betId: string) => {
+		dispatch(removeBet(betId));
 		dispatch(isOpen({'isOpen': false}))
 	}
 
@@ -17,7 +17,7 @@ const Bet : React.FC<IBet> = ({id, name, price}) => {
 		<div className='bet' key={id}>
 			<p className='bet__name'>{name}</p>
 			<p className="bet__price">{price}</p>
-			<button className='bet__button' onClick={() => handleDelete({id, name, price})}>Delete</button>
+			<button className='bet__button' onClick={() => handleDelete(id)}>Delete</button>
 		</div>
 	);
 };

@@ -14,7 +14,7 @@ const Selection : React.FC<ISelection> = ({id, name, price, isSelected}) => {
 
 	const handleChange = (bet: IBet) => {
 		if(findBet(bet.id, stateBets)) {
-			dispatch(removeBet(bet))
+			dispatch(removeBet(bet.id))
 		} else {
 			dispatch(addBet(bet))
 			dispatch(isOpen({'isOpen': true}))

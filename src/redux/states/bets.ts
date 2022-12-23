@@ -15,7 +15,7 @@ export const betsSlice = createSlice({
       return [...state, action.payload];
     },
     removeBet: (state, action) => {
-      const filteredState = current(state).filter((b: IBet) => b.id !== action.payload.id);
+      const filteredState = current(state).filter((b: IBet) => b.id !== action.payload);
       setLocalStorage(LocalStorageTypes.BETS, filteredState);
       return filteredState;
     }
